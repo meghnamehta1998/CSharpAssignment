@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ManageProductDetails.Models.Products>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Searching</title>
+</head>
+<body>
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <div style="font-family:Arial">
+        <h2>Index</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <p>
+            @using (Html.BeginForm("Searching", "AddProductDetails", FormMethod.Get))
+            {
+                <b> Search by</b> @Html.RadioButton("searchby", "Name", true)<b> Name</b>
+                @Html.RadioButton("searchby", "Category") <b> Category</b><br />
+                @Html.TextBox("search") <input type="submit" value=" Search" />
+            }
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShortDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LongDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SmallImagePath)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LargeImagePath)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShortDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LongDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SmallImagePath)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LargeImagePath)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+</body>
+</html>

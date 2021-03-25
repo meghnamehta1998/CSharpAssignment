@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ManageProductDetails.Models.Products>
+
+@{
+    ViewBag.Title = "SortProducts";
+}
+
+<h2>SortProducts</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+           Category
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LongDescription)
+        </th>
+        <th>
+           Small Image
+        </th>
+        <th>
+            Large Image
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Category)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Price)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Quantity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ShortDescription)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LongDescription)
+    </td>
+    <td>
+        <img src="@Url.Content(String.Format("{0}",item.SmallImagePath))" style="height:200px;width:200px;" />
+    </td>
+    <td>
+        <img src="@Url.Content(String.Format("{0}",item.LargeImagePath))" style="height:200px;width:200px;" />
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+    </td>
+</tr>
+}
+
+</table>
