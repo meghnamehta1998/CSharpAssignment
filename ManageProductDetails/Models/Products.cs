@@ -42,7 +42,7 @@ namespace ManageProductDetails.Models
     public class ProductsDBContext : DbContext
     {
 
-        public ProductsDBContext()
+        public ProductsDBContext(): base("DefaultConnection")
         { }
         public DbSet<Products> Products { get; set; }
         //public DbSet<Image> Images { get; set; }
